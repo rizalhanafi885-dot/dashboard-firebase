@@ -1,3 +1,4 @@
+alert("register.js KELOAD");
 function register() {
   // ambil element
   const nama = document.getElementById("nama");
@@ -62,3 +63,4 @@ function register() {
   };
   reader.readAsDataURL(fotoFile);
 }
+
