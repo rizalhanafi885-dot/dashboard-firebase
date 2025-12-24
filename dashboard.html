@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dark">
+<aside class="sidebar">
+  <div class="frame1">
+  <h2>MENU</h2>
+  </div>
+  <ul>
+    <li class="menu-item" onclick="openTab('profil', this)">Profil</li>
+    <li class="menu-item" onclick="openTab('data', this)">Data</li>
+    <li class="menu-item" onclick="openTab('absensi', this)">Absensi</li>
+    <li class="menu-item" onclick="openTab('aboutme', this)">About Me</li>
+    <li class="menu-item" onclick="openTab('cashflow', this) ">Cash Flow</li>
+    <li class="menu-item" onclick="openTab('pengaturan',this)">Pengaturan</li>
+    <button class="btn-logout" onclick="logout()">
+  ⎋ Logout
+</button>
+
+
+  </ul>
+</aside>
+<main class="main">
+  <div id="profil" class="tab active">
+    <div class="cv-card">
+      <div class="cv-header">
+        <div>
+          <h1>Rizal Hanafi</h1>
+          <p>Mahasiswa</p>
+        </div>
+        <div class="avatar">
+          <img src="my poto .png" alt="Foto Profil">
+        </div>
+      </div>
+      <div class="cv-section">
+        <h3>Data Pribadi</h3>
+        <ul>
+          <li><b>NPM : </b>2451010220</li>
+          <li><b>Umur : </b> 20</li>
+          <li><b>Alamat : </b> Lampung Utara</li>
+          <li><b>Tanggal Lahir : </b> 8 Agustus 2005</li>
+        </ul>
+      </div>
+      <div class="cv-section">
+        <h3>Riwayat Pendidikan</h3>
+        <ul>
+          <li>MTs Nurul Ummah I Kotagede Yogyakarta</li>
+          <li>MA Nurul Ummah I Kotagede Yogyakarta</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<div id="data" class="tab data-card">
+  <h2>Data Akademik</h2>
+  <div class="form">
+    <input id="mk" placeholder="Nama Mata Kuliah"><br>
+    <input id="semester" placeholder="Semester"><br>
+    <input id="dosen" placeholder="Dosen Pengampu"><br>
+    <input id="nilai" placeholder="Nilai (A/B/C/D)"><br>
+    <input id="sks" type="number" placeholder="SKS"><br>
+    <button class="btn" onclick="tambah()">Simpan</button>
+  </div>
+  <select id="filterSemester" onchange="render()">
+    <option value="">Semua Semester</option>
+  </select>
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Mata Kuliah</th>
+        <th>Semester</th>
+        <th>Dosen</th>
+        <th>Nilai</th>
+        <th>Bobot</th>
+        <th>SKS</th>
+        <td>Aksi</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <div class="summary">
+    <div>Total SKS: <b id="totalSks">0</b></div>
+    <div>IPK: <b id="ipk">0.00</b></div>
+  </div>
+</div>
+<div id="absensi" class="tab">
+  <h2>Presensi Mahasiswa</h2>
+  <p>Klik Tombol di bawah Ini untuk Ke Siaril</p>
+<button class="btn-presensi"
+        onclick="window.open('https://siaril.radenintan.ac.id/kelas-perkuliahan/presensi', '_blank')">Presensi Kampus</button>
+</div>
+<div id="aboutme" class="tab data-card">
+  <h2>About Me</h2>
+
+  <div class="contact-list">
+    <div class="contact-item" onclick="copyText('081234567890')">
+      <svg viewBox="0 0 32 32"><path d="M16 2C8.3 2 2 8.1 2 15.7c0 2.8.8 5.4 2.4 7.7L2 30l6.8-2.2c2.2 1.2 4.7 1.9 7.2 1.9 7.7 0 14-6.1 14-13.7S23.7 2 16 2z"/></svg>
+      <span>085166590304</span>
+    </div>
+    <a class="contact-item" href="https://instagram.com/username" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/></svg>
+      <span>@scuide_7</span>
+    </a>
+    <a class="contact-item" href="mailto:email@gmail.com">
+      <svg viewBox="0 0 24 24"><path d="M2 4h20v16H2z"/></svg>
+      <span>rizalhanafi885@gmail.com</span>
+    </a>
+  </div>
+</div>
+
+  <div id="cashflow" class="tab data-card">
+    <h2>Cash Flow</h2>
+    <div class="form">
+      <input id="tanggal" type="date" placeholder="Tanggal">
+      <input id="deskripsi" placeholder="Deskripsi">
+      <input id="jumlah" type="number" placeholder="Jumlah">
+      <select id="tipe">
+        <option value="pemasukan">Pemasukan</option>
+        <option value="pengeluaran">Pengeluaran</option>
+      </select>
+      <button class="btn" onclick="tambahCashFlow()">Simpan</button>
+    </div>
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Tanggal</th>
+          <th>Deskripsi</th>
+          <th>Jumlah</th>
+          <th>Tipe</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyCashFlow"></tbody>
+    </table>
+    <div class="summary">
+      <div>Total Pemasukan: <b id="totalPemasukan">0</b></div>
+      <div>Total Pengeluaran: <b id="totalPengeluaran">0</b></div>
+      <div>Saldo: <b id="saldo">0</b></div>
+    </div>
+  </div>
+  <div id="pengaturan" class="tab">
+    <h2>Pengaturan</h2>
+    <p1>Web ini dibuat menggunakan html,java script , css, frontend data base dan  backend </p1><br>
+    <p2>- Project V 1.0 -</p2>
+  </div>
+</main>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
