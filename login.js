@@ -16,8 +16,9 @@ function login() {
 
   if (email === user.email && password === user.password) {
     localStorage.setItem("login", "true");
-    window.location.href = "dashboard.html";
+    window.location.href = "./dashboard.html";
   } else {
     alert("Email atau password salah");
   }
 }
+
