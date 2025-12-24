@@ -1,4 +1,4 @@
-alert("register.js KELOAD");
+
 function register() {
   // ambil element
   const nama = document.getElementById("nama");
@@ -59,8 +59,9 @@ function register() {
   reader.onload = function () {
     user.foto = reader.result;
     localStorage.setItem("user", JSON.stringify(user));
-    window.location.href = "login.html";
+    window.location.href = "./login.html";
   };
   reader.readAsDataURL(fotoFile);
 }
+
 
